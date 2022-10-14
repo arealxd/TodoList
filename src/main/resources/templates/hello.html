@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Page</title>
+    <style>
+        .logoutButton {
+            background-color: #62529c;
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logoutButton:hover {
+            background-color: purple;
+        }
+        .adminButton {
+            background-color: red;
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: 30px;
+        }
+        .adminButton:hover {
+            background-color: orangered;
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO PAGE</h1>
+    <br>
+    <div class="buttons">
+        <form th:action="@{/logout}" th:method="POST">
+            <input class="logoutButton" type="submit" value="LOGOUT">
+        </form>
+        <br>
+        <form th:action="@{/admin}" th:method="GET" >
+            <input class="adminButton" type="submit" value="ADMIN PANEL">
+        </form>
+    </div>
+</body>
+</html>

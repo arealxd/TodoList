@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="shortcut icon" href="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/79-512.png" type="image/png">
+<!--    <link rel="stylesheet" href="../../static/css/main.css">-->
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        ul[class],
+        ol[class] {
+            padding: 0;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        ul[class],
+        ol[class],
+        li,
+        figure,
+        figcaption,
+        blockquote,
+        dl,
+        dd {
+            margin: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            text-rendering: optimizeSpeed;
+            line-height: 1.5;
+        }
+
+        ul[class],
+        ol[class] {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        article > * + * {
+            margin-top: 1em;
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        body {
+            background-color: rgb(219, 219, 219);
+            color: #000;
+        }
+
+        .logo {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        form {
+            width: 400px;
+            padding: 60px;
+            background-color: #fff;
+            display: table;
+            margin: 0 auto;
+            margin-top: 50px;
+
+        }
+
+        .input {
+            width: 250px;
+            margin-bottom: 10px;
+            padding: 5px 5px 5px 10px;
+            background-color: rgb(255, 255, 255);
+            border: 0;
+            outline: 0;
+            background: transparent;
+            border: 1px solid rgb(145, 145, 145);
+
+        }
+
+        .registration, .have {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .a_btn_reset, .a_btn_register, .a_btn_log {
+            text-decoration: none;
+            color: rgb(8, 115, 148);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .a_btn_reset:hover, .a_btn_register:hover, .a_btn_log:hover {
+            transition: all 0.5s ease;
+            color: rgb(11, 163, 209);
+        }
+
+        .btn {
+            width: 250px;
+            height: 35px;
+            margin: 0px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            padding: 0;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            background-color: rgb(8, 115, 148);
+            color: rgb(255, 255, 255);
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: rgb(11, 163, 209);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+        <form th:method="POST" th:action="@{/auth/registration}" th:object="${person}">
+            <div class="container">
+                <h1><img src="https://www.tadviser.ru/images/4/4a/Areal_logo_origin_black.png" alt="logo" class="logo"></h1>
+
+                <div id="signUp" class="active">
+                    <input class="input" type="text" placeholder="Имя пользователя" th:field="*{username}" id="username" required>
+                    <div style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</div>
+                    <input class="input" type="email" placeholder="Электронный адрес" th:field="*{email}" id="email" required>
+                    <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+                    <input class="input" type="password" placeholder="Пароль" th:field="*{password}" id="password" required>
+                    <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+                    <input class="btn" type="submit" value="Зарегистрироваться">
+                </div>
+
+                <p id="have" class="active have">Есть аккаунт? <a class="a_btn_reset" href="/auth/login">Вход</a></p>
+        </form>
+
+    <script src="../../static/js/main.js"></script>
+</body>
+</html>
